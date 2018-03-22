@@ -13,3 +13,31 @@
 {% else %}
     <p>course {{course.name}} is normal course</p>
 {% endif%}
+
+{% for tag in course.tags %}
+    <span>{{ tag }}</span>
+{% endfor %}
+
+
+{% extends "base.html" %}
+{% from 'macro.html' import course_item %}
+
+{% block header %}
+   <h1>header</h1>    
+{% endblock %}
+
+{% block content %}
+    {{ course_item(course) }}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
