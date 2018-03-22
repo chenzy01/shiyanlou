@@ -27,7 +27,11 @@
 {% endblock %}
 
 {% block content %}
-    {{ course_item(course) }}
+    <div>{{ course_item(course) }}</div>
+    <p>{{'='*20}}</p>
+    <div>{{ course_item(course,type="louplus") }}</div>
+    <p>teacher email:{{ course.teacher.email | hidden_email }}</p>
+    <p>course tag length:{{ course.tags | length}}</p>
 {% endblock %}
 
 
