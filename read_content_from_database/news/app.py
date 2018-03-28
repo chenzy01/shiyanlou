@@ -9,6 +9,7 @@ from pymongo import MongoClient
 app=Flask(__name__)
 app.config.update(dict(SQLALCHEMY_DATEBASE_URI='mysql://root@localhost/shiyanlou'))
 app.config['TEMPLATES_AUTO_RELOAD']=True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 
 db=SQLAlchemy(app)
 
