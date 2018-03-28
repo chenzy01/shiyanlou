@@ -45,7 +45,7 @@ class File(db.Model):
     def tags(self):
         return self.__file['tag']
 
-@event.listens_for(File,'after_instert')
+@event.listens_for(File,'after_insert')
 def auto_create_mongodb_file(mapper,conn,file):
     mongo.file.insert_into({'_id':file.id})
 
