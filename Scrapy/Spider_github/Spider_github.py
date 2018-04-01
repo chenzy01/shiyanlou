@@ -2,21 +2,21 @@
 import scrapy
 
 class GithubSpider(scrapy.Spider):
-    #ÃüÃûÅÀ³æµÄÃû×Ö
+    #å‘½åçˆ¬è™«çš„åå­—
     name='shiyanlou-github'
    # '''
    # def start_requests(self):
    #     url_tmpl='https://www.shiyanlou.com/courses/?category=all&course_type=all&fee=all&tag=all&page={}'
-       #ÌáÈ¡22¸öÍøÒ³µÄÍøÖ·ĞÎ³ÉÒ»¸öÔª×é
+       #æå–22ä¸ªç½‘é¡µçš„ç½‘å€å½¢æˆä¸€ä¸ªå…ƒç»„
    #     urls=(url_tmpl.format(i) for i in range(1,23))
    #     for url in urls:
-            #urlÖ¸Ã÷ÒªÅÀÈ¡µÄÍøÒ³£¬self.parseÌáÈ¡Êı¾İ
+            #urlæŒ‡æ˜è¦çˆ¬å–çš„ç½‘é¡µï¼Œself.parseæå–æ•°æ®
    #         yield scrapy.Request(url=url,callback=self.parse)
    # '''
     @property
     def start_urls(self):
         url_tmpl='https://github.com/shiyanlou?page={}&tab=repositories'
-        return (url_tmpl.formit(i) for i in range(1,5))
+        return (url_tmpl.format(i) for i in range(1,5))
 
     def parse(self,response):
         for repository in response.css('li.public'):
