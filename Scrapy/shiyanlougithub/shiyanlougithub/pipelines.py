@@ -11,7 +11,8 @@ from shiyanlougithub.items import ShiyanlougithubItem
 
 class ShiyanlougithubPipeline(object):
     def process_item(self, item, spider):
-        item['update_time']=datetime.strptime(item['update_time'],'%Y-%m-%dT%H:%M:%SZ')
+        item['update_time']=datetime.strptime(
+                item['update_time'],'%Y-%m-%dT%H:%M:%SZ')
         self.session.add(Repository(**item))
         return item
 

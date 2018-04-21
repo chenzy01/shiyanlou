@@ -22,11 +22,11 @@ class ShiyanlouGithubSpider(scrapy.Spider):
             yield request
 
     def parse_repo(self,response):
-        item=request.meta['item']
+        item=response.meta['item']
         for number in response.css('ul.numbers-summary li'):
             type_text=number.xpath('.//a/text()').re_first('\n\s*(.*)\n')
             number_text=number.xpath('.//span[@class="num text-emphasized"]/text()').re_first('\n\s*(.*)\n')
-            if tpye_text and number_text :
+            if type_text and number_text :
                 number_text=number_text.replace(',','')
                 if type_text in ('commit','commits'):
                     item['commits']=int(number_text)
