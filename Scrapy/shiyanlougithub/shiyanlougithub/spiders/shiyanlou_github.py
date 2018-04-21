@@ -15,7 +15,7 @@ class ShiyanlouGithubSpider(scrapy.Spider):
         for repository in response.css('li.public'):
             item=ShiyanlougithubItem()
             item['name']=repository.xpath('.//a[@itemprop="name codeRrpository"]/text()').re_first("\n\s(.*)")
-            item['update_time']=repository.xpath('.//relative_time/@datetime').extract_first()
+            item['update_time']=repository.xpath('.//relative-time/@datetime').extract_first()
             repo_url=response.urljoin(repository.xpath('.//a/@href').extract_first())
             request=scrapy.Request(repo_url,callback=self.parse_repo)
             request.meta['item']=item
