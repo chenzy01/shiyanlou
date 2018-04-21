@@ -7,7 +7,7 @@
 from sqlalchemy.orm import sessionmaker
 from shiyanlougithub.models import Repository,engine
 from datetime import datetime
-from shiyanlougithub.items import shiyanlougithubItem
+from shiyanlougithub.items import ShiyanlougithubItem
 
 class ShiyanlougithubPipeline(object):
     def process_item(self, item, spider):

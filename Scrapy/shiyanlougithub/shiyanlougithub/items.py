@@ -13,4 +13,6 @@ class ShiyanlougithubItem(scrapy.Item):
     # name = scrapy.Field()
     name=scrapy.Field()
     update_item=scrapy.Field()
-
+    commits=scrapy.Field()
+    branches=scrapy.Field()
+    releases=scrapy.Field()
