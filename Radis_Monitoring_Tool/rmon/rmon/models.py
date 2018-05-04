@@ -20,7 +20,7 @@ class Server(db.Model):
     port=db.Column(db.Integer,default=6379)
     password=db.Column(db.String())
     updated_at=db.Column(db.DateTime,default=datetime.utcnow)
-    created_at=db.Column(db.DateTime,default=datetime.tucnow)
+    created_at=db.Column(db.DateTime,default=datetime.utcnow)
 
     def __repr__(self):
 #显示服务器名称信息
