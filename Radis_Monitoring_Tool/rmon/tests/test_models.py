@@ -1,7 +1,10 @@
 
 from rmon.models import Server
+from rmon.common.rest import RestException
+
 
 class TestServer:
+
 
     def test_save(self,db):
 
@@ -16,3 +19,5 @@ class TestServer:
         assert Server.query.count()==1
         server.delete()
         assert Server.query.count()==0
+
+
