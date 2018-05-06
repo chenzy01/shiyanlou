@@ -20,6 +20,17 @@ class TestServer:
         server.delete()
         assert Server.query.count()==0
         
+    def test_ping_success(self,db,sever):
+#Server.ping方法执行成功，需保证Redis服务器监听在 127.0.0.1:6379地址
+        assert server.ping() is True
     
+    def test_ping_failed(sefl,db):
+#Server.ping 方法执行失败，会抛出 RedisException异常
+        server=Server(name='test',host='127.0.0.1',port=6399)
+        try:
+            server.ping()
+        excep RestException as e:
+            assert e.code == 400
+            assert e.message == 'redis server %s cannot connected' % server.host
 
 
