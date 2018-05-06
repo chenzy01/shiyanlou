@@ -54,5 +54,5 @@ class Server(db.Model):
         #获取Redis服务器监控信息
         try:
             return self.redis.info()
-        exception RedisError:
+        except RedisError:
             raise RestException(400,'redis server %s can not connected' % self.host) 
