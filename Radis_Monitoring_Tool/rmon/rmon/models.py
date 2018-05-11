@@ -1,7 +1,8 @@
 
 """
-该模块实现了所有的 model 类以及相应的序列化类，
 实现一个 Redis 服务器模型，对应到数据库中是一张表，用来存储 Redis 服务器信息。
+Server类，创建Redis服务器对象
+ServerSchema类，序列化和反序列化 Server对象
 """
 
 from flask_sqlalchemy import SQLAlchemy
