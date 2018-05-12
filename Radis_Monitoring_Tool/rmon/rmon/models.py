@@ -8,7 +8,7 @@ ServerSchema类，序列化和反序列化 Server对象
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from redis import StrictRedis,RedisError
-from rmon.commmon.rest import RestException
+from rmon.common.rest import RestException
 from marshmallow import (Schema, fields, validate, post_load,
                          validates_schema, ValidationError)
 
