@@ -11,7 +11,8 @@ class ObjectMustBeExist:
         self.object_class=object_class
 
     def __call__(self,func):
-
+        
+        @wraps(func)
         def wrapper(*args,**kwargs):
 
             object_id=kwargs.get('object_id')

@@ -1,6 +1,6 @@
 
 import json
-from flask import url_for 
+ifrom flask import url_for 
  
 from rmon.models import Server
 
@@ -27,11 +27,28 @@ class TestServerList:
     def test_create_server_success(self,db,client):
         pass
 
+    def test_create_server_failed_with_invalid_host(self,db,client):
+        pass
+
     def test_cerate_server_failed_with_duplciate_server(self,server,client):
         pass
 
 
+class TestServerDetail:
+    endpoint='api.server_detail'
 
+    def test_get_server_success(self,server,client):
+        pass
 
+    def test_get_server_failed(self,db,client):
+        pass
 
+    def test_update_server_success(self,server,client):
+        pass
+
+    def test_update_server_success_with_duplicate_server(self,server,client):
+        pass
+
+    def test_delete_failed_with_host_not_exist(self,db,client):
+        pass
 
