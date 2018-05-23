@@ -5,6 +5,14 @@ ifrom flask import url_for
 from rmon.models import Server
 
 
+class TestIndex:
+    endpoint=='api.index'
+
+    def test_index(self,client):
+        resp=client.get(url_for(self.endpoint)
+        assert resp.status_code==200
+        assert b'<div id="app"></div>' in resp.data
+  
 class TestServerList:
 
     endpoint='api.server_list'
@@ -25,7 +33,24 @@ class TestServerList:
         assert 'created_at' in h
 
     def test_create_server_success(self,db,client):
-        pass
+        assert Server.query.count()==0
+        data={
+            'name':'Redis测试服务器'
+            'description':'这是一台服务器'
+            'host':'127.0.0.1'
+        }
+        resp=client.post(url_for(self.endpoint),
+                         data=json.dump(data),
+                         content_type='application/json')
+        
+        assert resp.status_code==201
+        assert resp.json=={'ok':True}
+                        
+        assert Server.query.count()==1
+        server=Server.query.first()
+        assert server is not None
+        for key in data:
+            assert getattr(server,key)==data[key]
 
     def test_create_server_failed_with_invalid_host(self,db,client):
         pass
