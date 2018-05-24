@@ -5,9 +5,10 @@ from flask import request, Response, make_response
 from flask.json import dumps
 from flask.views import MethodView
 
+from werkzeng.wrappers import Response
 
 class RestException(Exception):
-#异常基类
+    #异常基类
 
     def __init__(self,code,message):
         """初始化异常
