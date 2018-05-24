@@ -1,3 +1,4 @@
+#该模块实现了装饰器
 
 from functools import wraps
 from flask import g
@@ -5,7 +6,8 @@ from rmon.common.rest import RestException
 
 
 class ObjectMustBeExist:
-
+    #该装饰器确保操作的对象必须存在
+    
     def __init__(self,object_class):
         
         self.object_class=object_class
@@ -29,3 +31,6 @@ class ObjectMustBeExist:
         return wrapper
 
 
+class cached_property:
+    #缓存属性
+    pass
