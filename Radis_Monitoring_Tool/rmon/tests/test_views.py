@@ -6,7 +6,7 @@ from rmon.models import Server
 
 
 class TestIndex:
- #测试首页，渲染模板
+    #测试首页，渲染模板
     endpoint=='api.index'
 
     def test_index(self,client):
@@ -172,5 +172,34 @@ class TestServerDetail:
         assert resp.status_code==404                   
         assert resp.json==errors                   
                            
+class TestServerMetrics:                           
+    #测试Redis监控信息API
+    
+    endpoint='api.server_metrics'                          
+    
+    def test_get_metrics_success(self,server,client):
+        #成功获取Redis服务器监控信息                   
+        resp=client.get(url_for(self.endpoint,object_id=server.id))
+        assert resp.status_code==200                  
+        metrics=resp.json           
+        #refer https://redis.io/commands/INFO                   
+        assert 'total_commands_processed' in metrics                   
+        assert 'used_cpu_sys' in metrics                  
+        assert 'used_memory' in metrics                   
+        
+    def test_get_metrics_failed_with_server_not_exist(self,db,client):                     
+        #获取不存在的Redis服务器监控信息失败                   
+        errors={'ok':False,'message':'object not exist'}                   
+        server_not_exist=100                   
+        assert Server.query.get(server_not_exist) is None                   
+        resp =client.get(url_for(self.endpoint,object_id=server_not_exist))                   
+        assert resp.status_code==404                   
+        assert resp.json==errors
                            
-
+                           
+class TestServerCommand:
+    #测试Redis服务器执行命令接口  
+                           
+    endpoint='api.server_command'                          
+                           
+                           
