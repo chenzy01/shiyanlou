@@ -18,7 +18,7 @@ npm run build
 ```
 
 ## 代码分析
-整个目录结构：
+整个目录结构：<br>
 ![](https://github.com/chenzy01/shiyanlou/blob/master/Radis_Monitoring_Tool/rmon/rmon/frontend/frontend%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
 <br>
 1、通过Webpack编译，发布到路径：../rmon/rmon/static/js/app.js 文件中。<br>
