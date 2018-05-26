@@ -19,19 +19,8 @@ npm run build
 
 ## 代码分析
 整个目录结构：
-![](https://github.com/chenzy01/shiyanlou/Radis_Monitoring_Tool/rmon/rmon/frontend/frontend目录结构.png)
-frontend
-├── .babelrc
-├── README.md
-├── package.json
-├── src
-│   ├── App.vue
-│   ├── main.js
-│   └── views
-│       ├── Metric.vue
-│       └── Server.vue
-└── webpack.config.js
-
+![](https://github.com/chenzy01/shiyanlou/blob/master/Radis_Monitoring_Tool/rmon/rmon/frontend/frontend%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
+<br>
 1、通过Webpack编译，发布到路径：../rmon/rmon/static/js/app.js 文件中。<br>
 2、package.json:包含了关于整个项目的各种信息，比如项目名称，可执行命令，以及整个项目的依赖软件包。<br>
 3、webpack.config.js ：执行 webpack 命令时从这个文件中读取相应的配置信息。<br>
