@@ -1,6 +1,6 @@
 # frontend
 
-基于 [Vue.js](https://cn.vuejs.org/) 开发项目。
+基于 [Vue.js](https://cn.vuejs.org/) 开发项目。\n
 Vue 是一套构建用户界面的渐进式框架，是一个 JavaScript 框架，用于在 HTML 页面上实现用户界面。
 
 
@@ -31,7 +31,7 @@ frontend
 │       └── Server.vue
 └── webpack.config.js
 
-1、通过Webpack编译，发布到路径：../rmon/rmon/static/js/app.js 文件中。
+1、通过Webpack编译，发布到路径：../rmon/rmon/static/js/app.js 文件中。\n
 2、package.json:包含了关于整个项目的各种信息，比如项目名称，可执行命令，以及整个项目的依赖软件包。
 3、webpack.config.js ：执行 webpack 命令时从这个文件中读取相应的配置信息
 4、.babelrc ：将 ES6 语法的源代码转译为浏览器能够识别的语法，通过 Babel 工具完成。
