@@ -1,4 +1,4 @@
-"""
+#项目介绍
 
 本项目将实现一个 Redis 服务器监控应用 rmon，该应用可以管理多台 Redis 服务器，并监控 Redis 服务器的状态。
 
@@ -28,4 +28,4 @@ rmon/frontend 目录包含所有的前端界面实现代码;
 
 rmin/static 目录包含所有的静态文件，比如 javascript 文件
 
-"""
+
