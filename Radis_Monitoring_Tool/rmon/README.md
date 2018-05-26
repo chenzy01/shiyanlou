@@ -24,7 +24,7 @@ rmon.app 模块实现了创建 Flask 应用的函数 create_app;
 
 rmon/templates 目录包含所有的模板文件;
 
-rmon/frontend 目录包含所有的前端界面实现代码，目前是一个空目录;
+rmon/frontend 目录包含所有的前端界面实现代码;
 
 rmin/static 目录包含所有的静态文件，比如 javascript 文件
 
