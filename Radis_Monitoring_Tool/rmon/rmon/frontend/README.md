@@ -19,6 +19,7 @@ npm run build
 
 ## 代码分析
 整个目录结构：
+![](https://github.com/chenzy01/shiyanlou/Radis_Monitoring_Tool/rmon/rmon/frontend/frontend目录结构.png)
 frontend
 ├── .babelrc
 ├── README.md
