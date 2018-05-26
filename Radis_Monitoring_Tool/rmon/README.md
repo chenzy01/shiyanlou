@@ -16,6 +16,8 @@ $ pip install -r requirements.txt
 
 ## 项目框架
 
+![](https://github.com/chenzy01/shiyanlou/blob/master/Radis_Monitoring_Tool/rmon/rmon%E9%A1%B9%E7%9B%AE%E6%A1%86%E6%9E%B6.png)
+
 rmon.models 模块包含了所有的数据库定义;
 
 rmon.views 模块包含了所有的视图控制器代码;
