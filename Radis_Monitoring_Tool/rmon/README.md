@@ -1,4 +1,4 @@
-#项目介绍
+# 项目介绍
 
 本项目将实现一个 Redis 服务器监控应用 rmon，该应用可以管理多台 Redis 服务器，并监控 Redis 服务器的状态。
 
@@ -13,6 +13,8 @@ $ pip install -r requirements.txt
 项目目录为 /.../rmon;
 
 项目中包含核心代码 rmon 模块;
+
+## 项目框架
 
 rmon.models 模块包含了所有的数据库定义;
 
