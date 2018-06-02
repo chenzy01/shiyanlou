@@ -53,6 +53,36 @@ class TestServer:
     def test_execute_failed(self,server):
         pass
     
+
+class TestUser:
+    """测试User
+    """
+    
+   def test_verify_password(self, user): 
+       
+        assert user.verify_password(PASSWORD)
+        
+        wrong_password = PASSWORD + '0'
+        assert not user.verify_password(wrong_password)
+        
+    def test_authonticate(self, user):
+        
+        assert User.authonticate(user.name, PASSWORD)
+        assert User.authonticate(user.email, PASSWORD)
+        
+        wrong_password = PASSWORD + '0'
+        
+        try:
+            User.authonticate(user.name, wrong_password)
+        except AuthonticationError as e:
+            assert e.code == 403
+            assert e.message == 'authonticate failed'
+            
+        try:
+            User.autonticate(user.email, wrong_password)
+        except AuthonticationError as e:
+            assert e.code == 403
+            assert e.message == 'authonticate failed'
     
     
     
