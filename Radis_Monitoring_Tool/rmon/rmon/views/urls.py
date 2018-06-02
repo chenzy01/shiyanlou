@@ -19,3 +19,7 @@ api.add_url_rule('/server/<int:object_id>/metrics',
 
 api.add_url_rule('/server/<int:object_id>/command',
                  view_fucn=ServerCommand.as_view('server_command'))
+
+# 登录
+api.add_url_rule('/login', view_func=AuthView.as_view('login'))
+
