@@ -8,6 +8,9 @@ from rmon.models import Server,ServerSchema
 
 class ServerList(RestView):
     #Redis服务器列表
+    
+    method_decorators = (TokenAuthenticate(), )
+    
     def get(self):
         #获取服务器列表
         servers=Server.query.all()
@@ -28,8 +31,8 @@ class ServerList(RestView):
 
 class ServerDetail(RestView):
     #Redis服务器列表
-    method_decorators=(ObjectMustBeExist(Server),)
-
+    method_decorators=(TokenAuthenticate(), ObjectMustBeExist(Server))
+    
     def get(self,object_id):
         data,_ =ServerSchema().dump(g.instance)
         return data
