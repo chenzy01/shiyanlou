@@ -21,8 +21,10 @@ class AuthView(RestView):
         用户可以使用昵称或者邮箱进行登录，登录成功后返回用于后续认证的 token
         """
 
-        # FIXME 没有处理 data 为 None 的情况
         data = request.get_json()
+        if data is None:
+            raise AuthenticationError(403, 'user or password required')
+            
         name = data.get('name')
         password = data.get('password')
 
@@ -31,6 +33,9 @@ class AuthView(RestView):
 
         # FIXME 只有管理员用户允许登录管理后台
         user = User.authenticate(name, password)
+        if not user.is_admin:
+            raise AuthenticationError(403, 'user name or password required')
+            
         user.login_at = datetime.utcnow()
         user.save()
         return {'ok': True, 'token': user.generate_token()}
