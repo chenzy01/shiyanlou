@@ -1,8 +1,10 @@
 #定义所有API对应的URL
 
 from flask import Blueprint
+
 from rmon.views.index import IndexView
 from rmon.views.server import （ServerList，ServerDetail，ServerCommand,ServerMetrics）
+from rmon.views.wx import WxView
 
 
 api=Blueprint('api',__name__)
@@ -22,4 +24,7 @@ api.add_url_rule('/server/<int:object_id>/command',
 
 # 登录
 api.add_url_rule('/login', view_func=AuthView.as_view('login'))
+
+#微信消息回调地址
+api.add_url_rule('/wx/',view_func=WxView.as_view('wx_view'))
 
