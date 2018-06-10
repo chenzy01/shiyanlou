@@ -7,6 +7,8 @@ from rmon.models import User
 from rmon.wx import wx_dispatcher
 from rmon.common.rest import RestView
 
+from wechatpy import parse_message, create_reply
+
 
 class WxView(MethodView):
     """ 微信相关视图控制器
@@ -43,8 +45,10 @@ class WxView(MethodView):
         """
         
         self.check_sigature()
-        current_app.logger.debug(request.data)
-        return ''
+        
+        msg = parse_message(request.data)
+        reply = cerate_reply(msg.content, msg)
+        return reply.render()
         
         
         
