@@ -5,6 +5,7 @@ Login
 {% endblock %}
 
 {% block body %}
+<div class="form">
   <h2>登录</h2>
   <!-- 要在 form 里指定 POST 方法和点击提交后需要请求的 url -->
   <form method="POST" action="{{ url_for('front.login') }}">
@@ -33,5 +34,6 @@ Login
     <!-- 渲染提交按钮，传入 Bootstrap 的按钮类-->
     {{ form.submit(class="btn btn-primary") }}
   </form>
+</div>  
 {% endblock %}
 
