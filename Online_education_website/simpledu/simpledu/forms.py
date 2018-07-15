@@ -8,7 +8,7 @@ from simpledu.models import db,User
 
 class RegisterForm(FlaskForm):
     
-    username = StringField('用户名', validators=[Required(), Length(3, 24)])
+    username = StringField('用户名', validators=[Required(), Length(3, 24),Regexp('^[A-Za-z0-9]*$',0,'只能含有字母、数字')])
     email = StringField('邮箱', validators=[Required(), Email()])
     password = PasswordField('密码', validators=[Required(), Length(6, 24)])
     repeat_password = PasswordField('重复密码', validators=[Required(), EqualTo('password')])
