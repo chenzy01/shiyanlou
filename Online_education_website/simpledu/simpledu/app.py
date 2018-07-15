@@ -9,10 +9,9 @@ from simpledu.models import db, User
 def create_app(config):
     app = Flask(__name__)
     app.config.from_object(configs.get(config))
-    db.init_app(app)
-    Migrate(app, db)
+    regisgter_extensions(app)
     register_blueprints(app)
-
+    return app
 #    @app.route('/')
 #    def index():
 #        courses = Course.query.all()
@@ -22,7 +21,6 @@ def create_app(config):
 #    def admin_index():
 #        return 'admin'
 
-    return app
 
 def register_blueprints(app):
     from .handlers import front, course, admin, user
