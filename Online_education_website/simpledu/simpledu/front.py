@@ -1,6 +1,7 @@
 from simpledu.forms import LoginForm, RegisterForm
 from flask import flash
-from flask_login import login_user
+from flask_login import login_user,logout_user, login_required
+
 
 @front.route('/login', methods=['GET', 'POST'])
 def login():
@@ -20,3 +21,11 @@ def register():
         flash('注册成功，请登录！', 'success')
         return redirect(url_for('.login'))
     return render_template('register.html', form=form)
+
+@front.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('您已经退出登录', 'success')
+    return redirect(url_for('.index'))
+
