@@ -2,13 +2,14 @@ from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import Length, Email, EqualTo, Required
+from wtforms import ValidationError
 
 from simpledu.models import db,User
 
 
 class RegisterForm(FlaskForm):
     
-    username = StringField('用户名', validators=[Required(), Length(3, 24),Regexp('^[A-Za-z0-9]*$',0,'只能含有字母、数字')])
+    username = StringField('用户名', validators=[Required(), Length(3, 24))
     email = StringField('邮箱', validators=[Required(), Email()])
     password = PasswordField('密码', validators=[Required(), Length(6, 24)])
     repeat_password = PasswordField('重复密码', validators=[Required(), EqualTo('password')])
@@ -24,6 +25,8 @@ class RegisterForm(FlaskForm):
         return user
     
     def validate_username(self, field):
+        if not field.data.isalnum():
+            raise ValidationError('用户名只能由字母和数字组成')
         if User.query.filter_by(username=field.data).first():
             raise ValidationError('用户名已经存在')
             
