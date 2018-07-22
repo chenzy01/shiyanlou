@@ -1,6 +1,7 @@
 from simpledu.forms import LoginForm, RegisterForm
 from flask import flash
 from flask_login import login_user,logout_user, login_required
+from flask import request, current_app
 
 
 @front.route('/login', methods=['GET', 'POST'])
@@ -28,4 +29,17 @@ def logout():
     logout_user()
     flash('您已经退出登录', 'success')
     return redirect(url_for('.index'))
+
+@front.route('/')
+def index():
+    page = request.args.get('page', default=1, type=int)
+    pagination = Course.query.pagination(
+        page=page,
+        pre_page=current_app.config['INDEX_PER_PAGE'],
+        error_out=False
+    )
+    return render_template('index.html',pagination=pagination)
+
+
+
 
