@@ -1,2 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ chapter.name }}
+{% endblock %}
+
+{% block head_css %}
+<!-- 使用 super 语法继承父 block 的 css 文件-->
+{{ super() }}
+<!-- 引入 video-js.css CDN 文件 -->
+<link href="http://vjs.zencdn.net/6.2.7/video-js.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+{% endblock %}
+
+{% block tail_js %}
+{{ super() }}
+<script src="http://vjs.zencdn.net/6.2.8/video.js"></script>
+{% endblock %}
+
 
 
