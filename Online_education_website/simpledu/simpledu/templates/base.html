@@ -61,6 +61,14 @@
           {% endif %}
       {% endwith %}
     
+    {% block head_css%}
+    css 文件
+    {% endblock %}
+    {% block tail_js %}
+    js 文件
+    {% endblock %}
+       
+    
     {% block body %}{% endblock %}
     {% block footer %}{% endblock %}
   </div>
