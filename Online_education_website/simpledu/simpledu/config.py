@@ -1,6 +1,7 @@
 
 class BaseConfig(object):
     SECRET_KEY = 'makesure to set a very secret key'
+    ADMIN_PER_PAGE = 15
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
