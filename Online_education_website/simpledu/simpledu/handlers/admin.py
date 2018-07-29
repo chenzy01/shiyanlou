@@ -1,8 +1,8 @@
 from flask import Blueprint
-from flask import render_template
+from flask import render_template, redirect, url_for, flash
 from flask import request,current_app
 from simpledu.decorators import admin_required
-from simpledu.models import Course
+from simpledu.models import Course, CourseForm
 
 admin = Blueprint('admin',__name__,url_prefix='/admin')
 
@@ -21,3 +21,14 @@ def courses():
         error_out=False
     )
     return render_template('admin/courses.html', pagination=pagination)
+
+
+@admin.route('/course/create', methods=['GET', 'POST'])
+@admin_required
+def create_course():
+    form = CourseForm()
+    if form.validate_on_submit():
+        from.create_course()
+        flash('课程创建成功', 'success')
+        return redirect(url_for('admin.courses'))
+    return render_template('admin/create_course.html',form=form)
