@@ -44,6 +44,13 @@ def edit_course(course_id):
         return redirect(url_for('admin.courses'))
     return render_template('admin/edit_course.html', form=form, course=course)
     
-    
+@admin.route('/course/<int:course_id>/delete')
+@admin_required
+def delete_course(course_id):
+    course = Course.query.get_or_404(course_id)
+    db.session.delete(course)
+    db.session.commit()
+    flash('课程删除成功', 'success')
+    return redirect(url_for('admin.courses'))
     
     
