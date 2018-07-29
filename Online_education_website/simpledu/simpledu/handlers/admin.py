@@ -32,3 +32,18 @@ def create_course():
         flash('课程创建成功', 'success')
         return redirect(url_for('admin.courses'))
     return render_template('admin/create_course.html',form=form)
+
+@admin.route('/courses/<int:course_id>/edit', methods=['GET','POST'])
+@admin.required
+def edit_course(course_id):
+    course = Course.query.get_or_404(course_id)
+    form = CourseForm(obj=course)
+    if form.validate_on_submit():
+        form.update_course(course)
+        flash('课程更新成功', 'success')
+        return redirect(url_for('admin.courses'))
+    return render_template('admin/edit_course.html', form=form, course=course)
+    
+    
+    
+    
