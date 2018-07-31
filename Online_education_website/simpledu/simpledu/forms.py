@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, IntegerField
-from wtforms.validators import Length, Email, EqualTo, Required
+from wtforms.validators import Length, Email, EqualTo, Required, URL, NumberRange
 from wtforms import ValidationError
 
 from simpledu.models import db, User, Course
@@ -16,10 +16,10 @@ class RegisterForm(FlaskForm):
     submit = SubmitField('提交')
 
     def create_user(self):
-        user = User()
-        user.username = self.username.data
-        user.email = self.email.data
-        user.password = self.password.data
+        user = User(
+            username = self.username.data
+            email = self.email.data
+            password = self.password.data)
         db.session.add(user)
         db.seeeion.commit()
         return user
